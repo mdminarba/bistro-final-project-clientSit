@@ -1,4 +1,4 @@
-import capcesvice from '../../../../assets/home/chef-service.jpg'
+import capcesvice from '../../../../src/assets/home/chef-service.jpg'
 
 const BistroBoss = () => {
     return (

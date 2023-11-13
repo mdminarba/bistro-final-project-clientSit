@@ -7,6 +7,7 @@ import Slide5  from '../../../assets/home/slide2.jpg';
 import Slide6  from '../../../assets/home/slide3.jpg';
 import Slide9  from '../../../assets/home/slide4.jpg';
 import SectionsTitle from '../Shared/SectionsTitle/SectionsTitle';
+
 const FoodCetagory = () => {
   return (
     <>
@@ -17,7 +18,7 @@ const FoodCetagory = () => {
    
     <Swiper
       slidesPerView={4}
-      spaceBetween={30}
+      spaceBetween={10}
       centeredSlides={true}
       pagination={{
         clickable: true,

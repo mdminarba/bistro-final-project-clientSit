@@ -1,7 +1,6 @@
-import Slide4  from '../../../../assets/menu/salad-bg.jpg';
-
-import Slide2  from '../../../../assets/menu/dessert-bg.jpeg';
-import Slide1  from '../../../../assets/menu/pizza-bg.jpg';
+import Slide4  from '../../../../src/assets/menu/salad-bg.jpg';
+import Slide2  from '../../../../src/assets/menu/dessert-bg.jpeg';
+import Slide1  from '../../../../src/assets/menu/pizza-bg.jpg';
 const ChefRecommends = () => {
   return (
     <div className="lg:flex-row flex md:flex-row justify-center gap-6 flex-col my-10">

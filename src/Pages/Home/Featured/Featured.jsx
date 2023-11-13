@@ -1,5 +1,6 @@
-import inmage from '../../../../assets/home/featured.jpg'
-import SectionsTitle from '../../Shared/SectionsTitle/SectionsTitle'
+import inmage from '../../../../src/assets/home/featured.jpg'
+import SectionsTitle from '../Shared/SectionsTitle/SectionsTitle'
+
 import './FettureImage.css'
 
 const Featured = () => {

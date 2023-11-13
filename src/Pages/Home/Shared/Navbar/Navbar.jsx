@@ -1,40 +1,43 @@
-import { Link, NavLink } from "react-router-dom"
+import {  Link, NavLink } from "react-router-dom"
+import  icon from "../../../../assets/icon/151-1511569_cart-notifications-free-shopping-cart-favicon-hd-png-removebg-preview.png"
+import { useContext } from "react"
+import { AuthContext } from "../../../../providers/AuthProbider"
 // import pic5 from '../../../../assets/magi.svg';
 
 
 const Navbar = () => {
-  // const { logOut, user, } = useContext(AuthContext)
-  // const handleSignOut = () => {
-  //     logOut()
-  //         .then()
-  //         .catch()
-  // }
+  const { logOut, user } = useContext(AuthContext)
+  const handleSignOut = () => {
+    logOut()
+      .then()
+      .catch()
+  }
   const link = <>
     <li className=" transition ease-in-out  delay-150  hover:-translate-y-1 hover:scale-110"><NavLink to="/" style={({ isActive, isPending, isTransitioning }) => {
       return {
         fontWeight: isActive ? "bold" : "",
-        color: isPending ? "wheat" : "black",
+        color: isPending ? "bisque" : "wheat",
         backgroundColor: isActive ? "purple" : "",
         viewTransitionName: isTransitioning ? "slide" : "",
       };
     }}>Home</NavLink></li>
-    <li className=" transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110"><NavLink to="/addJob" style={({ isActive, isPending, isTransitioning }) => {
+    <li className=" transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110"><NavLink to="/menu" style={({ isActive, isPending, isTransitioning }) => {
       return {
         fontWeight: isActive ? "bold" : "",
         color: isPending ? " bisque" : "white ",
         backgroundColor: isActive ? "purple" : " ",
         viewTransitionName: isTransitioning ? "slide" : "",
       };
-    }}>Add Job</NavLink></li>
-    <li className=" transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110"><NavLink to="/postedJobs" style={({ isActive, isPending, isTransitioning }) => {
+    }}>Our Menu</NavLink></li>
+    <li className=" transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110"><NavLink to="/login" style={({ isActive, isPending, isTransitioning }) => {
       return {
         fontWeight: isActive ? "bold" : "",
         color: isPending ? " bisque" : "wheat",
         backgroundColor: isActive ? "purple" : "",
         viewTransitionName: isTransitioning ? "slide" : "",
       };
-    }}>Posted Jobs</NavLink></li>
-    <li className=" transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110"><NavLink to="/mybits" style={({ isActive, isPending, isTransitioning }) => {
+    }}>Login</NavLink></li>
+    <li className=" transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110"><NavLink to="/" style={({ isActive, isPending, isTransitioning }) => {
       return {
         fontWeight: isActive ? "bold" : "",
         color: isPending ? " bisque" : "wheat",
@@ -42,15 +45,25 @@ const Navbar = () => {
         viewTransitionName: isTransitioning ? "slide" : "",
       };
     }}>My Bids</NavLink></li>
-    <li className=" transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110"><NavLink to="/bidRequests" style={({ isActive, isPending, isTransitioning }) => {
+    <li className=" transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110"><NavLink to="/oderNow/salad" style={({ isActive, isPending, isTransitioning }) => {
       return {
         fontWeight: isActive ? "bold" : "",
         color: isPending ? " bisque" : "wheat",
         backgroundColor: isActive ? "purple" : "",
         viewTransitionName: isTransitioning ? "slide" : "",
       };
-    }}>Bid Requests</NavLink></li>
+    }}>Our Shop</NavLink></li>
+      {
+          user ? <>
 
+            <span className='mr-2 text-black hidden  items-center gap-4  rounded-lg py-2 lg:px-4 lg:font-extrabold'>  {user.displayName} <img className='w-12 border  rounded-full' src={user.photoURL} alt="" />  </span>
+            <button onClick={handleSignOut} className="bg-[purple] ml-4 py-2 px-5  rounded-lg transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300 text-white font-medium ">Sign Out</button>
+          </>
+            :
+            <Link to="/login">
+              <button className=" ml-4 py-2 px-5 text-white font-medium rounded-lg transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300">Login</button>
+            </Link>
+        }
 
   </>
   return (
@@ -72,11 +85,22 @@ const Navbar = () => {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          {link}
+          {link} <img className="w-10" src={icon } alt="" />
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+      
+      {
+          user ? <>
+
+            <span className='mr-2 text-black  flex items-center gap-4  rounded-lg py-2 lg:px-4 lg:font-extrabold'>  {user.displayName} <img className='w-12 border  rounded-full' src={user.photoURL} alt="" />  </span>
+            <button onClick={handleSignOut} className="bg-lime-400 lg:hidden  py-2 px-5  rounded transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300 text-white font-medium ">Sign Out</button>
+          </>
+            :
+            <Link to="/login">
+              <button className="bg-red-500 py-2 px-5 lg:hidden text-white font-medium rounded-sm transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300">Login</button>
+            </Link>
+        }
       </div>
     </div>
  

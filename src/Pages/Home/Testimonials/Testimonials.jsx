@@ -1,18 +1,17 @@
 import { useEffect, useRef, useState } from 'react'
-import SectionsTitle from '../../Shared/SectionsTitle/SectionsTitle'
-
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { Rating } from '@smastrom/react-rating';
-import image from '../../../../assets/quote-left 1.svg';
+import image from '../../../assets/quote-left 1.svg';
 import '@smastrom/react-rating/style.css'
+import SectionsTitle from '../Shared/SectionsTitle/SectionsTitle';
 
 const Testimonials = () => {
 
     const [testimonials, settestimonials] = useState([])
     useEffect(() => {
-        fetch('reviews.json')
+        fetch('http://localhost:5002/review')
             .then(res => res.json())
             .then(data => settestimonials(data))
     }, [])
@@ -50,7 +49,7 @@ const Testimonials = () => {
 
                                 <div className=" flex my-10 gap-10 flex-col items-center justify-center">
                                     <Rating
-                                        style={{ maxWidth: 180 }}
+                                        style={{ maxWidth: 200}}
                                         ref={ratingRef}
                                         value={ratings}
 
