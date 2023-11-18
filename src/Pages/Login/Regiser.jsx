@@ -1,38 +1,62 @@
 import { useForm } from "react-hook-form"
-import {   useContext, useState } from "react";
+import { useContext, useState } from "react";
 import picture from "../../assets/login.svg";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, } from "react-router-dom";
 import Google from "./Google";
 
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../providers/AuthProbider";
-
-
+import Swal from "sweetalert2";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 
 const Regiser = () => {
-    const { register, handleSubmit, formState: { errors }, } = useForm()
-    const { createUser } = useContext(AuthContext)
+    const axioaPublic = useAxiosPublic()
+    const Navigate = useNavigate()
+    const { register, handleSubmit, reset, formState: { errors }, } = useForm()
+    const { createUser, updateUserProfil } = useContext(AuthContext)
     const onSubmit = data => {
         console.log(data)
-        createUser(  data.email, data.password, data.name,  data.photo)
-        .then(result => {
-            const loggedUser = result.user
-            console.log(loggedUser)
-        })
+        createUser(data.email, data.password, data.name, data.photo)
+            .then(result => {
+                const loggedUser = result.user
+                console.log(loggedUser)
+                updateUserProfil(data.name, data.photoURL)
+                    .then(() => {
+                        const userInfo = {
+                            name: data.name,
+                            email: data.email
+                        }
+                        axioaPublic.post('/user', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    reset()
+                                    Swal.fire({
+                                        title: "Good job!",
+                                        text: "user profile info  updated",
+                                        icon: "success"
+                                    });
+                                    Navigate('/')
+                                }
+                            })
+
+                    })
+                    .catch(error => console.log(error))
+
+            })
     }
 
     const [showpassword, setshopassword] = useState(false)
-   
-    
+
+
     return (
         <div>
             <div>
-            <Helmet>
-        <title>Bistro Boss | Reriser</title>
+                <Helmet>
+                    <title>Bistro Boss | Reriser</title>
 
-      </Helmet>
+                </Helmet>
                 <div className="">
                     <div className="hero min-h-screen bg-base-200">
                         <div className="hero-content flex-col ">
@@ -92,7 +116,7 @@ const Regiser = () => {
                                                 <p className="font-medium">Already have an account <Link className="btn btn-sm btn-primary ml-5 text-white " to="/login">Login</Link></p>
                                             </label>
                                         </div>
-                                  
+
                                         <div className="form-control mt-6">
                                             <button className="btn btn-primary">Register</button>
 

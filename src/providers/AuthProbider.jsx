@@ -1,23 +1,31 @@
-import axios from "axios";
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+
+import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../configFile/firebase.config";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
- 
+
 
 
 export const AuthContext = createContext(null)
 const AuthProbider = ({ children }) => {
 
   const [user, setuser] = useState(null);
-  const [loding, setloding] = useState(true)
+  const [loading, setloading] = useState(true)
+  const axiosPulic = useAxiosPublic()
+
+  const googlePoroviver = new GoogleAuthProvider()
   const createUser = (email, name, password) => {
     return createUserWithEmailAndPassword(auth, email, name, password);
   }
 
   const signeIn = (email, password) => {
-    setloding(true)
+    setloading(true)
     return signInWithEmailAndPassword(auth, email, password)
+  }
+  const googleSignIn = () => {
+    setloading(true)
+    return signInWithPopup(auth, googlePoroviver)
   }
   useEffect(() => {
     const unSusvribe = onAuthStateChanged(auth, currenUser => {
@@ -28,45 +36,52 @@ const AuthProbider = ({ children }) => {
       }
     })
   }, [])
+
   useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, currenUser => {
-      const userEmail = currenUser.email || currenUser.user.email
-      const loggeduser = { email: userEmail }
-      setuser(currenUser)
-      setloding(false)
-      if (createUser) {
-        axios.post("http://localhost:5002/jwt",  loggeduser, { widthCredentials: true })
+    const unSusvribe = onAuthStateChanged(auth, currenUser => {
+      console.log('current valu', currenUser)
+      setuser(currenUser);
+      if (currenUser) {
+        const userInfo = { email: currenUser.email }
+        axiosPulic.post('/jwt', userInfo)
           .then(res => {
-            console.log("token respons", res.data)
+            if (res.data.token) {
+              localStorage.setItem('access-token', res.data.token)
+            }
           })
       }
-      
       else {
-        axios.post("http://localhost:5001/logOut",  currenUser, { widthCredentials: false })
-          .then(res => {
-            console.log(res.data)
-          })
-    }
-  })
-
+        localStorage.removeItem('access-token')
+      }
+      setloading(false)
+      
+    })
     return () => {
-      unSubscribe()
+      unSusvribe()
     }
-  }, [])
+  }, [axiosPulic])
+
   const logOut = () => {
-    setloding(true)
+    setloading(true)
     return signOut(auth);
   }
 
+  const updateUserProfil = (name, photo) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name, photoURL: photo
+    })
 
+  }
 
 
   const autInfo = {
     user,
-    loding,
+    loading,
     logOut,
     createUser,
     signeIn,
+    updateUserProfil,
+    googleSignIn,
 
   }
   return (

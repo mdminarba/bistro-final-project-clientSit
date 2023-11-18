@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import UseMenu from '../../../Hooks/UseMenu/UseMenu';
 import OderTab from './OderTab';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 
 const OurShop = () => {
@@ -23,7 +23,6 @@ const {category} = useParams()
   const dessert = menu.filter(item => item.category === 'dessert')
   const drinks = menu.filter(item => item.category === 'drinks')
   console.log(initialIndex,category  ,categories)
-
   return (
     <section className=''>
       <Helmet>
