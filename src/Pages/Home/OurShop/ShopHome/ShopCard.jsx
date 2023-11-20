@@ -13,7 +13,7 @@ const ShopCard = ({ item }) => {
   const locetion = useLocation()
   const { user } = useAuth()
   const axiosSecur = useAxiosSecure()
-  const [refetch] = useCarts()
+  const [,refetch,] = useCarts()
   const handleAddtoCard = () => {
     if (user && user.email) {
     

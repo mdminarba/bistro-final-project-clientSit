@@ -17,6 +17,8 @@ import AddItem from "../../../../Leaout/DashBboard/AddItem/AddItem";
 import AdminRouts from "../../../../providers/AdminRouts";
 import ManageItems from "../../../../Leaout/DashBboard/ManageItems/ManageItems";
 import UpdateItem from "../../../../Leaout/DashBboard/UpdateItem/UpdateItem";
+import Payment from "../../Payment/Payment";
+import Login from "../../../Login/Login";
 
 
 export const routers = createBrowserRouter([
@@ -41,7 +43,7 @@ export const routers = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <SingnIn/>
+        element: <Login/>
       },
       {
         path: "/register",
@@ -57,6 +59,11 @@ export const routers = createBrowserRouter([
       {
         path:"cart",
         element:<Cart></Cart>
+
+      },
+      {
+        path:"payment",
+        element:<Payment></Payment>
 
       },
       // Add min routs

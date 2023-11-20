@@ -1,21 +1,25 @@
-import { useContext } from "react";
-import { AuthContext } from "./AuthProbider";
-import { Navigate, useLocation } from "react-router-dom";
 
-
+import { Navigate, useLocation } from 'react-router-dom'
+import { AuthContext } from './AuthProbider'
+import { useContext } from 'react'
 
 const PrivateRoute = ({ children }) => {
-    const { user, loading } = useContext(AuthContext);
-    const location = useLocation();
-
+    const { user, loading } = useContext(AuthContext)
+    const location = useLocation()
     if (loading) {
         return <progress className="progress w-56"></progress>
     }
-
     if (user) {
-        return children;
+        return children
     }
-    return <Navigate to="/login" State = {{ from: location }} replace></Navigate>
-};
+    return <Navigate state={location.pathname} to="/login"></Navigate>
 
-export default PrivateRoute;
+}
+
+PrivateRoute.propTypes = {}
+
+export default PrivateRoute
+
+
+
+

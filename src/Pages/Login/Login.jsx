@@ -10,7 +10,6 @@ import { AuthContext } from "../../providers/AuthProbider";
 
 const Login = () => {
     const { signeIn } = useContext(AuthContext)
-    const form = location.State?.from?.pathname || "/"
     const location = useLocation()
     const navigate = useNavigate()
     const [success, setsuccess] = useState('')
@@ -47,33 +46,14 @@ const Login = () => {
         }
         signeIn(email, password)
             .then(result => {
-                console.log(result.user)
                 navigate(location?.state ? location.state : '/')
+                console.log(result.user)
 
-                const user = {
-                    email,
-                    lastLoggedAt: result.user?.metadata?.lastSignInTime
-                }
-                fetch('https://coffee-store-sever-gp8jhlf17-md-minar-babus-projects.vercel.app/users', {
-                    method: 'PATCH',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(user)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log(data)
-                        if (data.modifiedCount) {
-                            Swal.fire(
-                                'success',
-                                'User Createt Successfully.',
-                                'success'
-                            )
-                        }
-
-                    })
-
+                Swal.fire(
+                    'success',
+                    'User Createt Successfully.',
+                    'success'
+                )
             })
             .catch(error => {
                 console.error(error)
@@ -110,9 +90,7 @@ const Login = () => {
                         <h1 className="text-5xl font-bold">Login now!</h1>
                         <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                     </div>
-                    <div className="">
-                        <Google></Google>
-                    </div>
+
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
 
                         <form onSubmit={handleLogin} className="card-body">
@@ -143,6 +121,9 @@ const Login = () => {
                                 <label className="label">
                                     <p className="font-medium">Do not have an account <Link className="btn btn-sm btn-primary ml-5 text-white " to="/register">Register</Link></p>
                                 </label>
+                            </div>
+                            <div className="">
+                                <Google></Google>
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Login</button>

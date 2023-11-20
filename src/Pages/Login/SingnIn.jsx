@@ -14,8 +14,9 @@ const Login = () => {
     const from = location.state?.from?.pathname || "/";
 
     useEffect(() => {
+      
         loadCaptchaEnginge(6);
-    }, [])
+    }, [navigate])
 
     const handleLogin = event => {
         event.preventDefault();
@@ -36,10 +37,10 @@ const Login = () => {
                         popup: 'animate__animated animate__fadeOutUp'
                     }
                 });
+  
             })
     }
     navigate(from, { replace: true });
-
     const handleValidateCaptcha = (e) => {
         const user_captcha_value = e.target.value;
         if (handleValidateCaptcha(user_captcha_value)) {
@@ -87,7 +88,7 @@ const Login = () => {
                             </div>
                             {/* TODO: make button disabled for captcha */}
                             <div className="form-control mt-6">
-                                <input disabled={false} className="btn btn-primary" type="submit" value="Login" />
+                                <input className="btn btn-primary" type="submit" value="Login" />
                             </div>
                             <label className="label">
                                 <p className="font-medium">Already have an account <Link className="btn btn-sm btn-primary ml-5 text-white " to="/register">register</Link></p>

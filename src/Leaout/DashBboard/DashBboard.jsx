@@ -1,11 +1,12 @@
 import { FaAd, FaBook, FaCalendar, FaHome, FaList, FaSearch, FaShoppingCart,  FaUsers, FaUtensils, FaVoicemail } from "react-icons/fa"
 import { NavLink, Outlet } from "react-router-dom"
 import useAdmin from "../../Hooks/useAdmin"
+import useCarts from "../../Hooks/useCarts"
 
 
 const DashBboard = () => {
     const [isAdmin] = useAdmin()
-
+    const [cart]=useCarts()
     return (
         <div className="flex lg:gap-5  lg:flex-row flex-col ">
             <div className="lg:w-72 min-h-screen p-8 w-full bg-orange-400 ">
@@ -95,8 +96,8 @@ const DashBboard = () => {
                                     }}
                                 >
 
-                                    <FaShoppingCart></FaShoppingCart>
-                                    My Cart </NavLink>
+                                    <FaShoppingCart>5555</FaShoppingCart>
+                                    My Cart + {cart.length} </NavLink> 
                                 </li>
                                 <li className=""><NavLink to="/dashBboard/userHome "
                                     style={({ isActive, isPending, isTransitioning }) => {
@@ -107,6 +108,7 @@ const DashBboard = () => {
                                             viewTransitionName: isTransitioning ? "slide" : "",
                                         };
                                     }}
+                                    
                                 >
                                     <FaHome></FaHome>
                                     User Home </NavLink>

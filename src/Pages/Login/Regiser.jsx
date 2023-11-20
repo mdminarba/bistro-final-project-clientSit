@@ -33,8 +33,8 @@ const Regiser = () => {
                                 if (res.data.insertedId) {
                                     reset()
                                     Swal.fire({
-                                        title: "Good job!",
-                                        text: "user profile info  updated",
+                                        title: "Good Registration!",
+                                        text: "user Registration Successfully",
                                         icon: "success"
                                     });
                                     Navigate('/')

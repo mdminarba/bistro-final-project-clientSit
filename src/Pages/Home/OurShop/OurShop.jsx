@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import UseMenu from '../../../Hooks/UseMenu/UseMenu';
 import OderTab from './OderTab';
-import { useNavigate, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 
 
 const OurShop = () => {
