@@ -19,6 +19,10 @@ import ManageItems from "../../../../Leaout/DashBboard/ManageItems/ManageItems";
 import UpdateItem from "../../../../Leaout/DashBboard/UpdateItem/UpdateItem";
 import Payment from "../../Payment/Payment";
 import Login from "../../../Login/Login";
+import PaymentHistory from "../../Payment/PaymentHistory";
+import AdminHome from "../../../../Leaout/DashBboard/AdminHome/AdminHome";
+import UserHome from "../../../../Leaout/DashBboard/userHome/userHome";
+
 
 
 export const routers = createBrowserRouter([
@@ -66,10 +70,24 @@ export const routers = createBrowserRouter([
         element:<Payment></Payment>
 
       },
+      {
+        path:"userHome",
+        element:<UserHome/>
+
+      },
+      {
+        path:"paymintHestory",
+        element:<PaymentHistory/>
+
+      },
       // Add min routs
       {
         path:"users",
         element:<AdminRouts><AllUsers/></AdminRouts> 
+      },
+      {
+        path:"adminHome",
+        element:<AdminRouts><AdminHome/></AdminRouts> 
       },
       {
         path:"manageitems",
@@ -82,7 +100,7 @@ export const routers = createBrowserRouter([
       {
         path:"updateItem/:id",
         element:<AdminRouts><UpdateItem/></AdminRouts> ,
-        loader: ({params})=> fetch(`http://localhost:5002/menu/${params.id}`)
+        loader: ({params})=> fetch(`https://bistro-finel-project-serve.vercel.app/menu/${params.id}`)
       },
     ]
   }

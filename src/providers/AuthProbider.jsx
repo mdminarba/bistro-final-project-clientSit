@@ -46,14 +46,15 @@ const AuthProbider = ({ children }) => {
         axiosPulic.post('/jwt', userInfo)
           .then(res => {
             if (res.data.token) {
-              localStorage.setItem('access-token', res.data.token)
+              localStorage.setItem('access-token', res.data.token);
+              setloading(false)
             }
           })
       }
       else {
         localStorage.removeItem('access-token')
+        setloading(false)
       }
-      setloading(false)
       
     })
     return () => {

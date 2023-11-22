@@ -1,4 +1,4 @@
-import { FaAd, FaBook, FaCalendar, FaHome, FaList, FaSearch, FaShoppingCart,  FaUsers, FaUtensils, FaVoicemail } from "react-icons/fa"
+import { FaAd, FaBook, FaCalendar, FaHistory, FaHome, FaList, FaPaypal, FaSearch, FaShoppingCart,  FaUsers, FaUtensils, FaVoicemail } from "react-icons/fa"
 import { NavLink, Outlet } from "react-router-dom"
 import useAdmin from "../../Hooks/useAdmin"
 import useCarts from "../../Hooks/useCarts"
@@ -9,12 +9,12 @@ const DashBboard = () => {
     const [cart]=useCarts()
     return (
         <div className="flex lg:gap-5  lg:flex-row flex-col ">
-            <div className="lg:w-72 min-h-screen p-8 w-full bg-orange-400 ">
+            <div className="lg:w-80 min-h-screen p-8 w-full bg-orange-400 ">
                 <ul className="menu p-5  space-y-4">
 
                     {
                         isAdmin ? <>
-                            <li><NavLink to="/dashBboard/admin "
+                            <li><NavLink to="/dashBboard/adminHome"
                                 style={({ isActive, isPending, isTransitioning }) => {
                                     return {
                                         fontWeight: isActive ? "bold" : "",
@@ -96,10 +96,10 @@ const DashBboard = () => {
                                     }}
                                 >
 
-                                    <FaShoppingCart>5555</FaShoppingCart>
+                                    <FaShoppingCart></FaShoppingCart>
                                     My Cart + {cart.length} </NavLink> 
                                 </li>
-                                <li className=""><NavLink to="/dashBboard/userHome "
+                                <li className=""><NavLink to="/dashBboard/userHome"
                                     style={({ isActive, isPending, isTransitioning }) => {
                                         return {
                                             fontWeight: isActive ? "bold" : "",
@@ -113,7 +113,7 @@ const DashBboard = () => {
                                     <FaHome></FaHome>
                                     User Home </NavLink>
                                 </li>
-                                <li><NavLink to="/dashBboard/reservation "
+                                <li className=""><NavLink to="/dashBboard/paymint "
                                     style={({ isActive, isPending, isTransitioning }) => {
                                         return {
                                             fontWeight: isActive ? "bold" : "",
@@ -122,11 +122,12 @@ const DashBboard = () => {
                                             viewTransitionName: isTransitioning ? "slide" : "",
                                         };
                                     }}
-
+                                    
                                 >
-                                    <FaCalendar></FaCalendar>
-                                    Reservation </NavLink>
+                                    <FaHome></FaHome>
+                                    Payment History </NavLink>
                                 </li>
+                           
                                 <li><NavLink to="/dashBboard/review "
                                     style={({ isActive, isPending, isTransitioning }) => {
                                         return {
@@ -140,7 +141,7 @@ const DashBboard = () => {
                                     <FaAd></FaAd>
                                     Add Review </NavLink>
                                 </li>
-                                <li><NavLink to="/dashBboard/mybooking "
+                                <li><NavLink to="/dashBboard/paymintHestory "
                                     style={({ isActive, isPending, isTransitioning }) => {
                                         return {
                                             fontWeight: isActive ? "bold" : "",
@@ -150,8 +151,8 @@ const DashBboard = () => {
                                         };
                                     }}
                                 >
-                                    <FaList />
-                                    My Booking </NavLink>
+                                    <FaHistory />
+                                    Payment Real History  </NavLink>
                                 </li>
                             </>
 

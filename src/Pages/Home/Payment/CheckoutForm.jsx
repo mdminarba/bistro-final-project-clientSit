@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useCarts from "../../../Hooks/useCarts";
 import useAuth from "../../../Hooks/useAuth";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = () => {
     const [error, setEroor] = useState('')
@@ -10,17 +12,18 @@ const CheckoutForm = () => {
     const [transactionId, settransactionId] = useState('')
     const stripe = useStripe();
     const elements = useElements();
+    const navigate = useNavigate()
     const axiosSecure = useAxiosSecure()
     const { user } = useAuth()
-    const [cart] = useCarts()
+    const [cart, refetch] = useCarts()
     const totalPrice = cart.reduce((total, item) => total + item.price, 0)
     useEffect(() => {
-        if (totalPrice > 0){
+        if (totalPrice > 0) {
             axiosSecure.post('/create-payment-intent', { price: totalPrice })
-            .then(res => {
-                console.log(res.data.clientSecret)
-                setclientSecure(res.data.clientSecret)
-            })
+                .then(res => {
+                    console.log(res.data.clientSecret)
+                    setclientSecure(res.data.clientSecret)
+                })
         }
 
     }, [axiosSecure, totalPrice])
@@ -81,6 +84,14 @@ const CheckoutForm = () => {
 
                 const res = await axiosSecure.post('/payments', payment);
                 console.log('payment savet', res.data)
+                refetch()
+                if (res.data?.paymentResult?.insertedId) {
+                    Swal.fire(
+                        'success',
+                        'payment Successfully.',
+                        'success'
+                    )}
+                    navigate('/dashBboard/paymintHestory')
             }
 
         }

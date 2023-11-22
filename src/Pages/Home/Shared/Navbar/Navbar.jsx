@@ -4,12 +4,13 @@ import { useContext } from "react"
 import { AuthContext } from "../../../../providers/AuthProbider"
 import { FaShoppingCart } from "react-icons/fa";
 import useCarts from "../../../../Hooks/useCarts";
+import useAdmin from "../../../../Hooks/useAdmin";
 
 
 const Navbar = () => {
   const { logOut, user } = useContext(AuthContext)
   const [cart]=useCarts()
-
+const[isAdmin]=useAdmin()
   const handleSignOut = () => {
     logOut()
       .then()
@@ -68,6 +69,15 @@ const Navbar = () => {
         </button>
       </NavLink>
     </li>
+
+    {
+      user && isAdmin && <li><Link to="/dashBboard/adminHome">Dashboard</Link></li>
+    }
+    {
+      user && !isAdmin && <li><Link to="/dashBboard/userHome">Dashboard</Link></li>
+    }
+
+
     {
       user ? <>
 
