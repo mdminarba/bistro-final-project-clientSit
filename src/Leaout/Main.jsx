@@ -5,7 +5,6 @@ import Navbar from '../Pages/Home/Shared/Navbar/Navbar'
 
 const Main = () => {
   const locetion = useLocation()
-  console.log(locetion)
   const notHeaderFoder = locetion.pathname.includes('login')
   return (
     <div>

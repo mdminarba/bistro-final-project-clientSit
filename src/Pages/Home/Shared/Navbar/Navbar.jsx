@@ -1,15 +1,14 @@
 import { Link, NavLink } from "react-router-dom"
-import icon from "../../../../assets/icon/151-1511569_cart-notifications-free-shopping-cart-favicon-hd-png-removebg-preview.png"
-import { useContext } from "react"
 import { AuthContext } from "../../../../providers/AuthProbider"
-import { FaShoppingCart } from "react-icons/fa";
-import useCarts from "../../../../Hooks/useCarts";
 import useAdmin from "../../../../Hooks/useAdmin";
+import Menu from "../../../menu/menu";
+import { useContext } from "react";
+
 
 
 const Navbar = () => {
   const { logOut, user } = useContext(AuthContext)
-  const [cart]=useCarts()
+
 const[isAdmin]=useAdmin()
   const handleSignOut = () => {
     logOut()
@@ -17,76 +16,52 @@ const[isAdmin]=useAdmin()
       .catch()
   }
   const link = <>
-    <li className=" transition ease-in-out  delay-150  hover:-translate-y-1 hover:scale-110"><NavLink to="/" style={({ isActive, isPending, isTransitioning }) => {
+    <li className=" transition ease-in-out btn delay-150  hover:-translate-y-1 hover:scale-110"><NavLink to="/" style={({ isActive, isPending, isTransitioning }) => {
       return {
-        fontWeight: isActive ? "bold" : "",
-        color: isPending ? "bisque" : "wheat",
-        backgroundColor: isActive ? "purple" : "",
+        fontWeight: isActive ? "red" : "",
+        color: isPending ? "red" : "black",
+        backgroundColor: isActive ? "red" : "",
         viewTransitionName: isTransitioning ? "slide" : "",
       };
     }}>Home</NavLink></li>
-    <li className=" transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110"><NavLink to="/menu" style={({ isActive, isPending, isTransitioning }) => {
+    <li className=" transition ease-in-out btn delay-150  hover:-translate-y-1 hover:scale-110"><NavLink to="/application" style={({ isActive, isPending, isTransitioning }) => {
       return {
-        fontWeight: isActive ? "bold" : "",
-        color: isPending ? " bisque" : "white ",
-        backgroundColor: isActive ? "purple" : " ",
+        fontWeight: isActive ? "red" : "",
+        color: isPending ? " red" : "black ",
+        backgroundColor: isActive ? "red" : " ",
         viewTransitionName: isTransitioning ? "slide" : "",
       };
-    }}>Our Menu</NavLink></li>
+    }}>Application</NavLink></li>
 
-    <li className=" transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110"><NavLink to="/oderNow/contact" style={({ isActive, isPending, isTransitioning }) => {
-      return {
-        fontWeight: isActive ? "bold" : "",
-        color: isPending ? " bisque" : "wheat",
-        backgroundColor: isActive ? "purple" : "",
-        viewTransitionName: isTransitioning ? "slide" : "",
-      };
-      
-    }}>Contact</NavLink></li>
-    <li className=" transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110"><NavLink to="/oderNow/salad" style={({ isActive, isPending, isTransitioning }) => {
-      return {
-        fontWeight: isActive ? "bold" : "",
-        color: isPending ? " bisque" : "wheat",
-        backgroundColor: isActive ? "purple" : "",
-        viewTransitionName: isTransitioning ? "slide" : "",
-      };
-    }}>Our Shop</NavLink ></li>
-
-
-    <li>
-      <NavLink to="/dashBboard/cart" 
+    <li className=" transition ease-in-out delay-150 btn hover:-translate-y-1 hover:scale-110">
+      <NavLink to="/jobOffer" 
       style={({ isActive, isPending, isTransitioning }) => {
       return {
-        fontWeight: isActive ? "bold" : "",
-        color: isPending ? " bisque" : "wheat",
-        backgroundColor: isActive ? "purple" : "",
+        fontWeight: isActive ? "red" : "",
+        color: isPending ? " bisque" : "black",
+        backgroundColor: isActive ? "red" : "",
         viewTransitionName: isTransitioning ? "slide" : "",
       };
-    }} >
-        <button className="flex items-center">
-         <FaShoppingCart></FaShoppingCart>
-          <div className="btn-secondary  ml-3">+ {cart.length}</div>
-        </button>
+    }} >JOB OFFER
+       
       </NavLink>
     </li>
 
     {
-      user && isAdmin && <li><Link to="/dashBboard/adminHome">Dashboard</Link></li>
+      user && isAdmin && <li className=" transition ease-in-out delay-150 btn hover:-translate-y-1 hover:scale-110"><Link className="text-black" to="/dashBboard/adminHome">Admin Dashboard</Link></li>
     }
-    {
-      user && !isAdmin && <li><Link to="/dashBboard/userHome">Dashboard</Link></li>
-    }
+   
 
 
     {
       user ? <>
 
-        <span className='mr-2 text-black hidden  items-center gap-4  rounded-lg py-2 lg:px-4 lg:font-extrabold'>  {user.displayName} <img className='w-12 border  rounded-full' src={user.photoURL} alt="" />  </span>
-        <button onClick={handleSignOut} className=" ml-4 py-2 px-5  rounded-lg transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300 text-white font-medium ">Sign Out</button>
+        <span className='mr-2 text-black hidden btn items-center gap-4  rounded-lg py-2 lg:px-4 lg:font-extrabold'>  {user.displayName} <img className='w-12 border  rounded-full' src={user.photoURL} alt="" />  </span>
+        <button onClick={handleSignOut} className=" ml-4 py-2 px-5 btn rounded-lg transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300 text-black font-medium ">Sign Out</button>
       </>
         :
         <Link to="/login">
-          <button className=" ml-4 py-2 px-5 text-white font-medium rounded-lg transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300">Login</button>
+          <button className=" ml-4 py-2 btn px-5 text-black font-medium rounded-lg transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300">Login</button>
         </Link>
     }
 
@@ -95,38 +70,41 @@ const[isAdmin]=useAdmin()
 
 
 
-    <div className="navbar fixed z-10 bg-opacity-50  bg-black  text-white max-w-screen-xl mx-auto">
+    <div className="navbar  z-10 bg-white  text-white max-w-screen-xl mx-auto">
 
       <div className="navbar-start">
         <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost lg:hidden">
+          <label tabIndex={0} className="btn z-50 -mt-4  lg:hidden">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
           </label>
-          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+          <ul tabIndex={0} className="menu  menu-sm dropdown-content z-50 mt-3 p-2 shadow bg-white text-center rounded-box m-auto w-96">
             {link}
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl text-white  ">Bristo Boss</a>
+        <div className="">
+          <a className="btn btn-ghost normal-case text-xl text-black ">Bristo Boss  </a>
+          <div className="lg:hidden">
+      
+          </div>
+        </div>
+        
       </div>
-      <div className="navbar-center hidden lg:flex">
+      <div className="navbar-center hidden -lg:mt-5 lg:flex">
         <ul className="menu menu-horizontal px-1">
-          {link} <img className="w-10" src={icon} alt="" />
+          {link} 
         </ul>
       </div>
-      <div className="navbar-end">
-
-        {
-          user ? <>
-
-            <span className='mr-2 text-black  flex items-center gap-4   rounded-lg py-2 lg:px-4 lg:font-extrabold'> <span className="navbar-center hidden lg:flex">{user.displayName} </span> <img className='w-12 border  rounded-full' src={user.photoURL} alt="" />  </span>
-            <button onClick={handleSignOut} className="bg-lime-400 lg:hidden mr-8 py-2 px-5  rounded transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300 text-white font-medium ">Sign Out</button>
-          </>
-            :
-            <Link to="/login">
-              <button className="bg-red-500 py-2 px-5 lg:hidden text-white font-medium rounded-sm transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300">Login</button>
-            </Link>
-        }
+    
+     
+      <div className="navbar-end ">
+    <div className="absolute navbar-center  lg:flex hidden xl:right-  lg:top-8 lg:right-21 z-10">
+    <Menu></Menu>
+    </div>
+        <div className="absolute -mt-16 lg:hidden  top-[90px] -right-0  z-10">
+         <Menu></Menu>
+         </div>
       </div>
+     
     </div>
 
 

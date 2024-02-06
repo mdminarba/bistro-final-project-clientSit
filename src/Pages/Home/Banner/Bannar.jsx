@@ -2,12 +2,9 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 
-import  imag1  from '../../../../src/assets/home/01.jpg';
-import  imag2  from '../../../../src/assets/home/02.jpg';
-import  imag3  from '../../../../src/assets/home/03.png';
-import  imag4  from '../../../../src/assets/home/04.jpg';
-import  imag5  from '../../../../src/assets/home/05.png';
-import  imag6  from '../../../../src/assets/home/06.png';
+import  imag1  from '../../../../src/assets/home/Banner-01 (1).webp';
+import  imag2  from '../../../../src/assets/home/Banner-02.webp';
+import  imag3  from '../../../../src/assets/home/Banner-03.webp';
 import { Carousel } from "react-responsive-carousel";
 
 const Bannar = () => {
@@ -26,19 +23,8 @@ const Bannar = () => {
                     <img src={imag3} />
                     
                 </div>
-                <div>
-                    <img src={imag4} />
-                    
-                </div>
-                <div>
-                    <img src={imag5} />
-                    
-                </div>
-                <div>
-                    <img src={imag6} />
-                    
-                </div>
             
+             
                 
             
             </Carousel>

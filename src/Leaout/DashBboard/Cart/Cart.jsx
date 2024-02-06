@@ -10,7 +10,7 @@ import { Link } from "react-router-dom"
 const Cart = () => {
     const [cart ,refetch] = useCarts()
     const axiosSecure = useAxiosSecure()
-    const totalPrice = cart.reduce((total, item) => total + item.price, 0)
+    // const totalPrice = cart.reduce((total, item) => total + item.price, 0)
     const handleDelete = id => {
         Swal.fire({
             title: "Are you sure?",
@@ -41,7 +41,7 @@ const Cart = () => {
                 subHeding={"my card"} />
             <div className="flex justify-around font-bold">
                 <h2 className=" text-4xl">Item: {cart.length} </h2>
-                <h2 className="text-4xl ">Total Price: {totalPrice} </h2>
+       
              { cart.length ? <Link to="/dashBboard/payment">
                 <button  className="btn btn-primary btn-sm" >Pay</button>
                 </Link> :

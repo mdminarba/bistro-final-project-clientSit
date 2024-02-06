@@ -4,24 +4,27 @@ import {
 } from "react-router-dom";
 import Main from "../../../../Leaout/Main";
 import Home from "../../Home/Home";
-import Menu from "../../Menu/Menu/menu";
-import OurShop from "../../OurShop/OurShop";
 import Errore from "../../../../Error";
 import Regiser from "../../../Login/Regiser";
-import SingnIn from "../../../Login/SingnIn";
-import PrivateRoute from "../../../../providers/PrivateRoute";
+
+// import PrivateRoute from "../../../../providers/PrivateRoute";
 import DashBboard from "../../../../Leaout/DashBboard/DashBboard";
 import Cart from "../../../../Leaout/DashBboard/Cart/Cart";
 import AllUsers from "../../../../Leaout/DashBboard/Allusers/AllUsers";
 import AddItem from "../../../../Leaout/DashBboard/AddItem/AddItem";
 import AdminRouts from "../../../../providers/AdminRouts";
 import ManageItems from "../../../../Leaout/DashBboard/ManageItems/ManageItems";
-import UpdateItem from "../../../../Leaout/DashBboard/UpdateItem/UpdateItem";
-import Payment from "../../Payment/Payment";
+// import Payment from "../../Payment/Payment";
 import Login from "../../../Login/Login";
-import PaymentHistory from "../../Payment/PaymentHistory";
+// import PaymentHistory from "../../Payment/PaymentHistory";
 import AdminHome from "../../../../Leaout/DashBboard/AdminHome/AdminHome";
 import UserHome from "../../../../Leaout/DashBboard/userHome/userHome";
+import Menu from "../../../menu/menu";
+import UpdateCard from "../../../../Leaout/DashBboard/UpdateItem/UpdateCard";
+
+import AplicationCard from "../../Menu/Menu/AplicationCard";
+import Data from "../../Home/Data";
+import Application from "../../Menu/Menu/Application";
 
 
 
@@ -36,13 +39,10 @@ export const routers = createBrowserRouter([
         path: "/",
         element: <Home/>
       },
+
       {
-        path: "/menu",
-        element:<Menu/>
-      },
-      {
-        path: "/oderNow/:category",
-        element:<PrivateRoute><OurShop/></PrivateRoute> 
+        path: "/jobOffer",
+        element:<Data/>
         
       },
       {
@@ -52,6 +52,10 @@ export const routers = createBrowserRouter([
       {
         path: "/register",
         element: <Regiser/>
+      },
+      {
+        path: "/application",
+        element: <Application/>
       },
     ]
 
@@ -65,21 +69,26 @@ export const routers = createBrowserRouter([
         element:<Cart></Cart>
 
       },
-      {
-        path:"payment",
-        element:<Payment></Payment>
+      // {
+      //   path:"payment",
+      //   element:<Payment></Payment>
 
-      },
+      // },
       {
         path:"userHome",
         element:<UserHome/>
 
       },
       {
-        path:"paymintHestory",
-        element:<PaymentHistory/>
-
+        path:"menoo",
+        element:<Menu/>
       },
+      
+      // {
+      //   path:"paymintHestory",
+      //   element:<PaymentHistory/>
+
+      // },
       // Add min routs
       {
         path:"users",
@@ -98,9 +107,13 @@ export const routers = createBrowserRouter([
         element:<AdminRouts><AddItem/></AdminRouts> 
       },
       {
-        path:"updateItem/:id",
-        element:<AdminRouts><UpdateItem/></AdminRouts> ,
-        loader: ({params})=> fetch(`https://bistro-finel-project-serve.vercel.app/menu/${params.id}`)
+        path:"aplicationCard",
+        element:<AdminRouts><AplicationCard/></AdminRouts> 
+      },
+      {
+        path:"updateCard/:id",
+        element:<AdminRouts><UpdateCard/></AdminRouts> ,
+       
       },
     ]
   }

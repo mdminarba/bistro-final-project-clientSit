@@ -20,7 +20,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <AuthProbider>
       <QueryClientProvider client={queryClient}>
         <HelmetProvider>
-          <div className=" max-w-screen-xl mx-auto">
+          <div className=" xl 2xl mx-auto">
             <RouterProvider router={routers} />
           </div>
         </HelmetProvider>

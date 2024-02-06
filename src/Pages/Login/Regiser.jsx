@@ -17,7 +17,6 @@ const Regiser = () => {
     const { register, handleSubmit, reset, formState: { errors }, } = useForm()
     const { createUser, updateUserProfil } = useContext(AuthContext)
     const onSubmit = data => {
-        console.log(data)
         createUser(data.email, data.password, data.name, data.photo)
             .then(result => {
                 const loggedUser = result.user

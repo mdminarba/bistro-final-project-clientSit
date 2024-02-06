@@ -1,15 +1,19 @@
-import { FaAd, FaBook, FaCalendar, FaHistory, FaHome, FaList, FaPaypal, FaSearch, FaShoppingCart,  FaUsers, FaUtensils, FaVoicemail } from "react-icons/fa"
+import {  FaBook,  FaHome, FaList,  FaSearch, FaShoppingCart,  FaUsers, FaUtensils, FaVoicemail } from "react-icons/fa"
 import { NavLink, Outlet } from "react-router-dom"
 import useAdmin from "../../Hooks/useAdmin"
-import useCarts from "../../Hooks/useCarts"
+import { Helmet } from "react-helmet-async"
+
 
 
 const DashBboard = () => {
     const [isAdmin] = useAdmin()
-    const [cart]=useCarts()
+ 
     return (
-        <div className="flex lg:gap-5  lg:flex-row flex-col ">
-            <div className="lg:w-80 min-h-screen p-8 w-full bg-orange-400 ">
+        <div className="flex lg:gap-5  lg:flex-row  ">
+                <Helmet>
+    <title>AUTRALIA GOV | ADMIN DESH BOARD</title>
+  </Helmet>
+            <div className="lg:w-80 min-h-screen w-full bg-orange-400 ">
                 <ul className="menu p-5  space-y-4">
 
                     {
@@ -55,7 +59,7 @@ const DashBboard = () => {
                                 <FaList></FaList>
                                 Manage Items </NavLink>
                             </li>
-                            <li><NavLink to="/dashBboard/managebookings "
+                            <li><NavLink to="/dashBboard/aplicationCard "
                                 style={({ isActive, isPending, isTransitioning }) => {
                                     return {
                                         fontWeight: isActive ? "bold" : "",
@@ -66,7 +70,7 @@ const DashBboard = () => {
                                 }}
                             >
                                 <FaBook></FaBook>
-                                Manage Bookings </NavLink>
+                                Aplication</NavLink>
                             </li>
                             <li><NavLink to="/dashBboard/users "
                                 style={({ isActive, isPending, isTransitioning }) => {
@@ -85,80 +89,12 @@ const DashBboard = () => {
                             </>
                             :
                             <>
-                                <li><NavLink to="/dashBboard/cart "
-                                    style={({ isActive, isPending, isTransitioning }) => {
-                                        return {
-                                            fontWeight: isActive ? "bold" : "",
-                                            color: isPending ? " bisque" : "wheat",
-                                            backgroundColor: isActive ? "purple" : "",
-                                            viewTransitionName: isTransitioning ? "slide" : "",
-                                        };
-                                    }}
-                                >
-
-                                    <FaShoppingCart></FaShoppingCart>
-                                    My Cart + {cart.length} </NavLink> 
-                                </li>
-                                <li className=""><NavLink to="/dashBboard/userHome"
-                                    style={({ isActive, isPending, isTransitioning }) => {
-                                        return {
-                                            fontWeight: isActive ? "bold" : "",
-                                            color: isPending ? " bisque" : "wheat",
-                                            backgroundColor: isActive ? "purple" : "",
-                                            viewTransitionName: isTransitioning ? "slide" : "",
-                                        };
-                                    }}
-                                    
-                                >
-                                    <FaHome></FaHome>
-                                    User Home </NavLink>
-                                </li>
-                                <li className=""><NavLink to="/dashBboard/paymint "
-                                    style={({ isActive, isPending, isTransitioning }) => {
-                                        return {
-                                            fontWeight: isActive ? "bold" : "",
-                                            color: isPending ? " bisque" : "wheat",
-                                            backgroundColor: isActive ? "purple" : "",
-                                            viewTransitionName: isTransitioning ? "slide" : "",
-                                        };
-                                    }}
-                                    
-                                >
-                                    <FaHome></FaHome>
-                                    Payment History </NavLink>
-                                </li>
-                           
-                                <li><NavLink to="/dashBboard/review "
-                                    style={({ isActive, isPending, isTransitioning }) => {
-                                        return {
-                                            fontWeight: isActive ? "bold" : "",
-                                            color: isPending ? " bisque" : "wheat",
-                                            backgroundColor: isActive ? "purple" : "",
-                                            viewTransitionName: isTransitioning ? "slide" : "",
-                                        };
-                                    }}
-                                >
-                                    <FaAd></FaAd>
-                                    Add Review </NavLink>
-                                </li>
-                                <li><NavLink to="/dashBboard/paymintHestory "
-                                    style={({ isActive, isPending, isTransitioning }) => {
-                                        return {
-                                            fontWeight: isActive ? "bold" : "",
-                                            color: isPending ? " bisque" : "wheat",
-                                            backgroundColor: isActive ? "purple" : "",
-                                            viewTransitionName: isTransitioning ? "slide" : "",
-                                        };
-                                    }}
-                                >
-                                    <FaHistory />
-                                    Payment Real History  </NavLink>
-                                </li>
+                              
                             </>
 
                     }
                     <div className="divider"></div>
-                    <li><NavLink to="/menu"
+                    <li><NavLink to="/"
                         style={({ isActive, isPending, isTransitioning }) => {
                             return {
                                 fontWeight: isActive ? "bold" : "",
@@ -171,7 +107,7 @@ const DashBboard = () => {
                         <FaHome></FaHome>
                         Home </NavLink>
                     </li>
-                    <li><NavLink to="/oderNow/salat"
+                    <li><NavLink to="/"
                         style={({ isActive, isPending, isTransitioning }) => {
                             return {
                                 fontWeight: isActive ? "bold" : "",
@@ -184,7 +120,7 @@ const DashBboard = () => {
                         <FaSearch></FaSearch>
                         Menu</NavLink>
                     </li>
-                    <li><NavLink to="/oderNow//contact"
+                    <li><NavLink to="/"
                         style={({ isActive, isPending, isTransitioning }) => {
                             return {
                                 fontWeight: isActive ? "bold" : "",
@@ -201,7 +137,7 @@ const DashBboard = () => {
 
                 </ul>
             </div>
-            <div className="flex-1 p-8">
+            <div className="flex-1 ">
                 <Outlet></Outlet>
             </div>
         </div>

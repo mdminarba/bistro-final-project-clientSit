@@ -1,8 +1,9 @@
-
-import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
-import { createContext, useEffect, useState } from "react";
-import auth from "../configFile/firebase.config";
+import { useEffect, useState } from "react";
+import { createContext } from "react";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import auth from "../../configFile/firebase.config";
+
 
 
 
@@ -29,7 +30,6 @@ const AuthProbider = ({ children }) => {
   }
   useEffect(() => {
     const unSusvribe = onAuthStateChanged(auth, currenUser => {
-      console.log('current valu', currenUser)
       setuser(currenUser);
       return () => {
         unSusvribe()
@@ -39,7 +39,6 @@ const AuthProbider = ({ children }) => {
 
   useEffect(() => {
     const unSusvribe = onAuthStateChanged(auth, currenUser => {
-      console.log('current valu', currenUser)
       setuser(currenUser);
       if (currenUser) {
         const userInfo = { email: currenUser.email }

@@ -26,7 +26,8 @@ const AddItem = () => {
             const menuItem ={
                 name: data.name,
                 recipe: data.recipe,
-                price: parseFloat(data.price),
+                number: data.number,
+                pdf: data.pdf,
                 category: data.category,
                 image: res.data.data.display_url,
             }
@@ -63,36 +64,24 @@ const AddItem = () => {
                             <input type="text" name="Name" {...register("name", { required: true })} placeholder="Type Your Name" className="input input-bordered" />
                         </div>
                         <div className="flex lg:flex-row flex-col gap-5 ">
-                            <div className="form-control flex-1 ">
+                         
+                        <input {...register("image", { required: true })} className="my-5 w-64 file-input" type="file" name="image" id="" />
+                            <div className="form-control flex-1">
                                 <label className="label">
-                                    <span className="label-text">Category Select *</span>
+                                    <span className="label-text">number *</span>
                                 </label>
-
-                                <select defaultValue="defaulld" name="category" className="select select-bordered w-full " {...register("category",  { required: true })}>
-                                    <option disabled value="defaulld">Category</option>
-                                    <option value="salat">salat</option>
-                                    <option value="pizza">sizza</option>
-                                    <option value="soup">soup</option>
-                                    <option value="desserts">desserts</option>
-                                    <option value="drins">drins</option>
-                                </select>
+                                <input type="text" name="number" {...register("number", { required: true })} placeholder="Type Your Name" className="input input-bordered" />
                             </div>
                             <div className="form-control flex-1">
                                 <label className="label">
-                                    <span className="label-text">Price *</span>
+                                    <span className="label-text">PDF LINK *</span>
                                 </label>
-                                <input type="text" name="price" {...register("price", { required: true })} placeholder="Type Your Name" className="input input-bordered" />
+                                <input type="text" name="pdf" {...register("pdf", { required: true })} placeholder="Type Your Name" className="input input-bordered" />
                             </div>
                         </div>
                     </div>
-                    <div className="form-control flex-1">
-                        <label className="label">
-                            <span className="label-text">Details *</span>
-                        </label>
-                        <textarea name="recipe" className="textarea textarea-bordered  h-32" {...register("recipe", { required: true })} placeholder="recipe"></textarea>
-                    </div>
+
                     <div className="flex  form-control flex-col">
-                        <input {...register("image", { required: true })} className="my-5 w-64 file-input" type="file" name="image" id="" />
                         <div className=" w-32 p-2 text-white rounded-md   bg-[#B58130] "><button className=" flex ml-2 gap-2 items-center " >Add Item <FaUtensils></FaUtensils></button> </div>
                     </div>
 
@@ -103,3 +92,4 @@ const AddItem = () => {
 }
 
 export default AddItem
+
