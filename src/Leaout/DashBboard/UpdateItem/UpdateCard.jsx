@@ -5,7 +5,7 @@ import UpdateItem from "./UpdateItem"
 const UpdateCard = () => {
     const [datas, setdatas] = useState([])
     useEffect(()=>{
-        fetch(`http://localhost:5005/menu`)
+        fetch(`https://australiaimmigrationvisa-gray.vercel.app/menu`)
         .then(res=>res.json())
         .then(data=>setdatas(data))
       },[])

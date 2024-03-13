@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useRef, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProbider";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -83,7 +84,10 @@ const Login = () => {
 
     return (
         <div className="">
+                <Helmet>
+                    <title>Autalia Gov | Login</title>
 
+                </Helmet>
             <div className=" bg-base-200 flex-1 ">
                 <div className="hero-content flex-col ">
                     <div className="text-center ">
@@ -105,7 +109,7 @@ const Login = () => {
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input type={showpassword ? 'text' : "password"} name="password" placeholder="password" className="input input-bordered" required />
-                                <span className='relative -top-8  left-72 w-6' onClick={() => setshowpassword(!showpassword)}>{
+                                <span className='relative -top-8  left-56 w-6' onClick={() => setshowpassword(!showpassword)}>{
                                     showpassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>
                                 }</span>
                                 <label className="label">

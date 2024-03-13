@@ -13,6 +13,7 @@ const Menu = () => {
 
     try {
       const response = await axiosSecure.get(`/menu/${menuItemNumber}`);
+      console.log(response )
       setMenuResult(response.data);
     } catch (error) {
       console.error('Error:', error);
@@ -22,18 +23,20 @@ const Menu = () => {
   };
 
   return (
-    <div className=''>
+    <div className='lg:mt-0 mt-3'>
       
-      <form className='text-right ' onSubmit={handleSearch}>
+      <form className='lg:text-right w-72 right-10 text-left ml-10 mb-5 lg:-mt-14 -mt-[62px]' onSubmit={handleSearch}>
         <input
           type="text"
-          className='  text-black font-semibold border-none  bg-slate-200 px-1 py-1 w-32 rounded-l-md'
+          className='  text-black font-semibold border-none  bg-slate-200 px-1 py-2 w-33 rounded-l-md'
           id="menuItemNumber"
           value={menuItemNumber}
           onChange={(e) => setMenuItemNumber(e.target.value)}
+          placeholder=' Enter Passport Number'
           required
         />
-        <button className='bg-slate-500   px-1 rounded-r-md py-1 mr-4' type="submit">Search</button>
+       
+        <button className='bg-gray-500 text-black font-extrabold   px-1 rounded-r-md py-2 mr-4' type="submit">Search</button>
       </form>
 
       {menuResult && (
@@ -41,17 +44,17 @@ const Menu = () => {
           {menuResult.error ? (
             <p>Error: {menuResult.error}</p>
           ) : (
-            <div className=''>
-             
-              <h2 className='text-center text-black font-semibold ml-20 py-2 w-full '>{menuResult.name}</h2>
-              <p className='text-center text-black font-extrabold ml-20 py-2 w-full '>Number: {menuResult.number}</p>
-             
-              <a href={menuResult.pdf}>
-              <img className=' md:w-[7000px] w-[7000px] ml-20' src={menuResult.image} alt="" />
-              </a>
-          
-   
-            </div>
+            <div>
+            {menuResult.map(item => (
+              <div key={item._id}>
+                <h2 className='text-center text-black font-semibold py-2'>{item.name}</h2>
+                <p className='text-center text-black font-extrabold py-2'> Passport Number: {item.number}</p>
+                <a href={item.pdf}>
+                  <img className='md:w-[7000px] w-96' src={item.image} alt="" />
+                </a>
+              </div>
+            ))}
+          </div>
           )}
   
         </div>

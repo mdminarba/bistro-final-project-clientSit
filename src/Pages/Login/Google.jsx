@@ -6,6 +6,7 @@ import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 
+
 const Google = () => {
 
   const navigate = useNavigate()
@@ -37,7 +38,7 @@ const Google = () => {
   }
 
   return (
-    <div className='w-80 m-auto'>
+    <div className=' m-auto'>
       <Link onClick={googleHandleSignin} className='lg:w-72 m-auto mt-5'>
         <button ></button>
         <div className=" transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 border-2 text-center rounded-md mt-2 p-2 flex items-center gap-2  border-fuchsia-600 ">

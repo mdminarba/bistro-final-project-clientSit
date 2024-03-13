@@ -13,7 +13,7 @@ const BannerH = () => {
     <div>
        
     <div className="bg-pink-50">
-    <div className="grid lg:grid-cols-4 grid-cols-1 lg:mx-5 gap-3 lg:py-5 ">
+    <div className="grid lg:grid-cols-4  grid-cols-1 lg:mx-5 gap-3 lg:py-5 ">
       {
         menu.map(card =><HomeCard key={card._id} card={card} ></HomeCard>)
         }

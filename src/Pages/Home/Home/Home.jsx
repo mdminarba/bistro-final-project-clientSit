@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <div>
       <Helmet>
-        <title> AUTRALIA GOV | HOME</title>
+        <title>Autalia Gov | Home</title>
       </Helmet>
 
       <Bannar></Bannar>

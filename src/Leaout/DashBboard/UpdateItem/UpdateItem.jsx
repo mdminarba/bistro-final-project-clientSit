@@ -23,7 +23,7 @@ const UpdateItem = ({card}) => {
     const { register, handleSubmit, reset } = useForm()
     const axiosSecure = useAxiosSecure()
     const axiosPublic = useAxiosPublic()
-    const { name, recipe, category, number, _id } = card
+    const { name,  number, _id } = card
     console.log(card)
     console.log(name)
     const onSubmit = async (data) => {

@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProbider";
 import Swal from "sweetalert2";
-import { Helmet } from "react-helmet-async";
 import { loadCaptchaEnginge, LoadCanvasTemplate } from 'react-simple-captcha';
 import Google from "./Google";
 const Login = () => {
@@ -53,9 +52,7 @@ const Login = () => {
 
     return (
         <>
-            <Helmet>
-                <title>Bistro Boss | Login</title>
-            </Helmet>
+
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col md:flex-row-reverse">
                     <div className="text-center md:w-1/2 lg:text-left">

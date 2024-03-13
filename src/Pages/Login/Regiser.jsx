@@ -53,7 +53,7 @@ const Regiser = () => {
         <div>
             <div>
                 <Helmet>
-                    <title>Bistro Boss | Reriser</title>
+                    <title>Autalia Gov | Reriser</title>
 
                 </Helmet>
                 <div className="">
@@ -63,7 +63,7 @@ const Regiser = () => {
                                 <h1 className="text-5xl font-bold">Register now!</h1>
                                 <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                             </div>
-                            <div className=" flex lg:gap-5 ">
+                            <div className=" lg:w-full w-80 flex lg:gap-5 ">
                                 <div className="">
                                     <img src={picture} alt="" />
                                 </div>
@@ -94,23 +94,14 @@ const Regiser = () => {
                                                 maxLength: 20,
                                                 pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z]).{8}/
                                             },)} name="password" placeholder="password" className="input input-bordered " />
-                                            {errors.password && <span className="text-red-500  mt-2">Password is required</span>}
-                                            {errors.password?.type === 'minLength' && <p className="text-red-500 mt-2">Password must be 6 charaters</p>}
-                                            {errors.password?.type === 'maxLength' && <p className="text-red-500 mt-2">Password must be less then 20 </p>}
-                                            {errors.password?.type === 'pattern' && <p className="text-red-500 mt-2"> Password must be one  uppercase one lowercase one number one special charaters. </p>}
-                                            <span className='relative -top-8 lg:left-72 left-72 w-6' onClick={() => setshopassword(!showpassword)}>{
+                                            <span className='relative -top-8 lg:left-72 left-56 w-6' onClick={() => setshopassword(!showpassword)}>{
                                                 showpassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>
                                             }</span>
+                                            {errors.password?.type === 'pattern' && <p className="text-red-500 mt-2"> Password must be one  uppercase one lowercase one number one special charaters. </p>}
+                                            {errors.password && <span className="text-red-500  mt-2">Password is required</span>}
+                                            {errors.password?.type === 'minLength' && <p className="text-red-500 mt-2">Password must be 6 charaters</p>}
+                                        
 
-                                            <div className="form-control">
-                                                <label className="label">
-                                                    <span className="label-text">PhotoURL</span>
-                                                </label>
-                                                <input type="url" {...register("Photo", { required: true })} name="Photo" placeholder="Photourl"
-
-                                                    className="input input-bordered" />
-                                                {errors.Photo && <span className="text-red-500 mt-2">PhotoURL is required</span>}
-                                            </div>
                                             <label className="label">
                                                 <p className="font-medium">Already have an account <Link className="btn btn-sm btn-primary ml-5 text-white " to="/login">Login</Link></p>
                                             </label>

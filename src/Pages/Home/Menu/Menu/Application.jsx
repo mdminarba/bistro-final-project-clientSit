@@ -62,7 +62,7 @@ const Application = () => {
     return (
         <div className=" relative">
         <Helmet>
-        <title>AUTRALIA GOV | APPLICATION</title>
+        <title>Autalia Gov| Application</title>
       </Helmet>
             <h2 className=" bg-white w-full py-3 pl-10 font-bold absolute top-4 shadow-lg ">Application</h2>
             <div className="bg-[#F3F3F3] pb-10 pt-10 lg:px-10 ">

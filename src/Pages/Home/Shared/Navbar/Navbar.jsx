@@ -1,7 +1,8 @@
 import { Link, NavLink } from "react-router-dom"
 import { AuthContext } from "../../../../providers/AuthProbider"
 import useAdmin from "../../../../Hooks/useAdmin";
-import Menu from "../../../menu/menu";
+
+import M from '../../../../assets/../../public/Banner-01 (1).webp';
 import { useContext } from "react";
 
 
@@ -9,7 +10,7 @@ import { useContext } from "react";
 const Navbar = () => {
   const { logOut, user } = useContext(AuthContext)
 
-const[isAdmin]=useAdmin()
+  const [isAdmin] = useAdmin()
   const handleSignOut = () => {
     logOut()
       .then()
@@ -34,23 +35,23 @@ const[isAdmin]=useAdmin()
     }}>Application</NavLink></li>
 
     <li className=" transition ease-in-out delay-150 btn hover:-translate-y-1 hover:scale-110">
-      <NavLink to="/jobOffer" 
-      style={({ isActive, isPending, isTransitioning }) => {
-      return {
-        fontWeight: isActive ? "red" : "",
-        color: isPending ? " bisque" : "black",
-        backgroundColor: isActive ? "red" : "",
-        viewTransitionName: isTransitioning ? "slide" : "",
-      };
-    }} >JOB OFFER
-       
+      <NavLink to="/jobOffer"
+        style={({ isActive, isPending, isTransitioning }) => {
+          return {
+            fontWeight: isActive ? "red" : "",
+            color: isPending ? " bisque" : "black",
+            backgroundColor: isActive ? "red" : "",
+            viewTransitionName: isTransitioning ? "slide" : "",
+          };
+        }} >JOB OFFER
+
       </NavLink>
     </li>
 
     {
       user && isAdmin && <li className=" transition ease-in-out delay-150 btn hover:-translate-y-1 hover:scale-110"><Link className="text-black" to="/dashBboard/adminHome">Admin Dashboard</Link></li>
     }
-   
+
 
 
     {
@@ -72,39 +73,28 @@ const[isAdmin]=useAdmin()
 
     <div className="navbar  z-10 bg-white  text-white max-w-screen-xl mx-auto">
 
-      <div className="navbar-start">
-        <div className="dropdown">
-          <label tabIndex={0} className="btn z-50 -mt-4  lg:hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+      <div className="ml-[300px]">
+        <div className="dropdown mt-5  relative">
+          <label tabIndex={0} className="btn  z-50 -mt-4 btn-secondary px-5   lg:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 ml w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h24M4 12h24m-24 6h24" /></svg>
           </label>
-          <ul tabIndex={0} className="menu  menu-sm dropdown-content z-50 mt-3 p-2 shadow bg-white text-center rounded-box m-auto w-96">
+          <ul tabIndex={0} className="menu  menu-sm dropdown-content z-50 mt-3 absolute -right-1 p-2 shadow bg-white text-center rounded-box m-auto w-80">
             {link}
           </ul>
         </div>
-        <div className="">
-          <a className="btn btn-ghost normal-case text-xl text-black ">Bristo Boss  </a>
-          <div className="lg:hidden">
-      
-          </div>
-        </div>
         
+
       </div>
       <div className="navbar-center hidden -lg:mt-5 lg:flex">
         <ul className="menu menu-horizontal px-1">
-          {link} 
+          {link}
         </ul>
       </div>
-    
+
+      <div className="navbar-start ">
      
-      <div className="navbar-end ">
-    <div className="absolute navbar-center  lg:flex hidden xl:right-  lg:top-8 lg:right-21 z-10">
-    <Menu></Menu>
-    </div>
-        <div className="absolute -mt-16 lg:hidden  top-[90px] -right-0  z-10">
-         <Menu></Menu>
-         </div>
       </div>
-     
+
     </div>
 
 

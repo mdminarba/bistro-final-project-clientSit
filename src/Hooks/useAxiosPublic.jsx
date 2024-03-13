@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const axiosPublic = axios.create({
-  baseURL: 'https://australiaimmigrationvisa-hz2zi3dvj-md-minar-babus-projects.vercel.app'
+  baseURL: 'https://immigrationvisas-mmmmmmmmm.vercel.app/'
 })
 const useAxiosPublic = () => {
   return axiosPublic

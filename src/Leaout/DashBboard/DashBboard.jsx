@@ -85,6 +85,19 @@ const DashBboard = () => {
                                 <FaUsers></FaUsers>
                                 All User </NavLink>
                             </li>
+                            <li><NavLink to="https://flippingbook.com/document-hosting"
+                                style={({ isActive, isPending, isTransitioning }) => {
+                                    return {
+                                        fontWeight: isActive ? "bold" : "",
+                                        color: isPending ? " bisque" : "wheat",
+                                        backgroundColor: isActive ? "purple" : "",
+                                        viewTransitionName: isTransitioning ? "slide" : "",
+                                    };
+                                }}
+                            >
+                                <FaUsers></FaUsers>
+                                Upload PDF </NavLink>
+                            </li>
 
                             </>
                             :
