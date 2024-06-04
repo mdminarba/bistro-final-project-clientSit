@@ -213,7 +213,7 @@ const Menu = () => {
           onChange={(e) => setMenuItemNumber(e.target.value)}
           required
         />
-        <button className='border-2 border-red-300 px-1 rounded-md ' type="submit">Search</button>
+        <button className='border-2 border-red-300 px-1 rounded-md ' type="submit">Search..........</button>
       </form>
 
       {menuResult && (
