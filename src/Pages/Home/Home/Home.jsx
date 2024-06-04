@@ -14,21 +14,11 @@ const Home = () => {
   return (
     <div>
       <Helmet>
-        <title>Autalia Gov | Home</title>
+        <title>Australia Gov|Home</title>
       </Helmet>
 
       <Bannar></Bannar>
       <BannerH></BannerH>
-   
- 
-     
-      
-
-
-
-
-
-
     </div>
   )
 }

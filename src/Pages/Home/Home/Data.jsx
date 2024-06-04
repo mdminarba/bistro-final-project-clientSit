@@ -13,7 +13,7 @@ const Data = () => {
   return (
     <div>
     <Helmet>
-    <title>Autalia Gov| Job Offer</title>
+    <title>Australia Gov|Job Offer</title>
   </Helmet>
        
     <div className="bg-pink-50">

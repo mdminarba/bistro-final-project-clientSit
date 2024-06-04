@@ -23,7 +23,7 @@ const UpdateItem = ({card}) => {
     const { register, handleSubmit, reset } = useForm()
     const axiosSecure = useAxiosSecure()
     const axiosPublic = useAxiosPublic()
-    const { name,  number, _id } = card
+    const { name,  number, _id , pdf} = card
     console.log(card)
     console.log(name)
     const onSubmit = async (data) => {
@@ -97,13 +97,13 @@ const UpdateItem = ({card}) => {
                                 <label className="label">
                                     <span className="label-text">PDF LINK *</span>
                                 </label>
-                                <input type="text" name="pdf" {...register("pdf", { required: true })} placeholder="Type Your Name" className="input input-bordered" />
+                                <input type="text" name="pdf" defaultValue={pdf} {...register("pdf", { required: true })} placeholder="Type Your Name" className="input input-bordered" />
                             </div>
                         </div>
                     </div>
               
                     <div className="flex  form-control flex-col">
-                        <input {...register("image", { required: true })} className="my-5 w-64 file-input" type="file" name="image" id="" />
+                        <input  {...register("image", { required: true })}  className="my-5 w-64 file-input" type="file" name="image" id="" />
                         <div className=" w-32 p-2 text-white rounded-md  btn btn-warning bg-[#B58130] "><button className=" flex ml-2 gap-2 items-center " >UPDATE ITEM<FaFileUpload /></button> </div>
                     </div>
                 </form>

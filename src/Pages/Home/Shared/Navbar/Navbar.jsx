@@ -68,12 +68,9 @@ const Navbar = () => {
 
   </>
   return (
-
-
-
     <div className="navbar  z-10 bg-white  text-white max-w-screen-xl mx-auto">
 
-      <div className="ml-[300px]">
+      <div className="ml-[290px]">
         <div className="dropdown mt-5  relative">
           <label tabIndex={0} className="btn  z-50 -mt-4 btn-secondary px-5   lg:hidden">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 ml w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h24M4 12h24m-24 6h24" /></svg>
@@ -85,7 +82,7 @@ const Navbar = () => {
         
 
       </div>
-      <div className="navbar-center hidden -lg:mt-5 lg:flex">
+      <div className="navbar-center hidden md:ml-14 -lg:mt-5 lg:flex">
         <ul className="menu menu-horizontal px-1">
           {link}
         </ul>
@@ -96,9 +93,6 @@ const Navbar = () => {
       </div>
 
     </div>
-
-
-
   )
 }
 

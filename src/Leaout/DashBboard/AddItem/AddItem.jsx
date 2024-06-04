@@ -1,18 +1,20 @@
 import { useForm } from "react-hook-form"
 import SectionsTitle from "../../../Pages/Home/Shared/SectionsTitle/SectionsTitle"
-import { FaUtensils } from "react-icons/fa"
 import useAxiosPublic from "../../../Hooks/useAxiosPublic"
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { useState } from "react";
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_iapi = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 
 const AddItem = () => {
+
     const { register, handleSubmit ,reset} = useForm()
     const axiosPublic = useAxiosPublic()
     const axiosSecure = useAxiosSecure()
+    const [isLoading, setIsLoading] = useState(false);
     const onSubmit = async (data) => {
-
+        setIsLoading(true);
         console.log(data)
         const imageFile = {image: data.image[0]}
         const res = await axiosPublic.post(image_hosting_iapi, imageFile,{
@@ -34,8 +36,8 @@ const AddItem = () => {
             const menuRes = await axiosSecure.post('/menu',menuItem)
             console.log(menuRes.data)
             if(menuRes.data.insertedId){
-
                 reset()
+                setIsLoading(false);
                 Swal.fire({
                     position: "top-center",
                     icon: "success",
@@ -51,6 +53,10 @@ const AddItem = () => {
     return (
 
         <div>
+             <div className="flex justify-center items-center">
+             {isLoading && <span className="loading loading-spinner w-20  m-auto">Loading............</span>}
+             </div>
+         
             <SectionsTitle heading={'ADD AN ITEM'}
                 subHeding={"What's new"} />
             <div className="bg-[#F3F3F3] pb-10  px-10 ">
@@ -61,29 +67,35 @@ const AddItem = () => {
                             <label className="label">
                                 <span className="label-text">Name *</span>
                             </label>
-                            <input type="text" name="Name" {...register("name", { required: true })} placeholder="Type Your Name" className="input input-bordered" />
+                            <input type="text" name="Name" {...register("name", { required: true })} placeholder="Type Name" className="input input-bordered" />
                         </div>
                         <div className="flex lg:flex-row flex-col gap-5 ">
                          
-                        <input {...register("image", { required: true })} className="my-5 w-64 file-input" type="file" name="image" id="" />
                             <div className="form-control flex-1">
                                 <label className="label">
-                                    <span className="label-text">number *</span>
+                                    <span className="label-text">Passport Number *</span>
                                 </label>
-                                <input type="text" name="number" {...register("number", { required: true })} placeholder="Type Your Name" className="input input-bordered" />
+                                <input type="text" name="number" {...register("number", { required: true })} placeholder="Type Passport Number" className="input input-bordered" />
+                            </div>
+                            <div className="form-control flex-1">
+                                <label className="label">
+                                    <span className="label-text">Choose Your Image *</span>
+                                </label>
+                               
+                        <input {...register("image", { required: true })} className=" w-64 file-input" type="file" name="image" id="" />
                             </div>
                             <div className="form-control flex-1">
                                 <label className="label">
                                     <span className="label-text">PDF LINK *</span>
                                 </label>
-                                <input type="text" name="pdf" {...register("pdf", { required: true })} placeholder="Type Your Name" className="input input-bordered" />
+                                <input type="text" name="pdf" {...register("pdf", )} placeholder="Type  PDF LINK" className="input input-bordered" />
                             </div>
                         </div>
                     </div>
-
-                    <div className="flex  form-control flex-col">
-                        <div className=" w-32 p-2 text-white rounded-md   bg-[#B58130] "><button className=" flex ml-2 gap-2 items-center " >Add Item <FaUtensils></FaUtensils></button> </div>
+                    <div className=" form-control mt-8  flex-col">
+                        <div className=" w-full text-white rounded-md   "><button className=" w-full  btn-secondary btn" >Submit </button> </div>
                     </div>
+                    {isLoading && <progress className="progress w-full"></progress>}
 
                 </form>
             </div>

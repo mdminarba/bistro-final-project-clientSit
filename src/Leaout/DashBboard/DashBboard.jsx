@@ -13,7 +13,7 @@ const DashBboard = () => {
                 <Helmet>
     <title>AUTRALIA GOV | ADMIN DESH BOARD</title>
   </Helmet>
-            <div className="lg:w-80 min-h-screen w-full bg-orange-400 ">
+            <div className="lg:w-80 min-h-screen w-full bg-pink-700 ">
                 <ul className="menu p-5  space-y-4">
 
                     {
